@@ -35,7 +35,7 @@ const options = {
     url: "https://us21.api.mailchimp.com/3.0/lists/d031bdd9bd",
     method: "POST",
     headers: {
-        "Authorization": "adeleke1 d21d08529b623c258d53772fe57bb800-us21"
+        "Authorization": SECRET_API_KEY
     },
     body: jsonData
 };
@@ -50,6 +50,7 @@ request(options, (error, response, body) => {
             res.sendFile(__dirname + "/failure.html");
         }
     }
+    console.log(response.statusCode);
 });
 
 });
