@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -5,6 +6,7 @@ const request = require("request");
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
+
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/signup.html");
@@ -35,7 +37,7 @@ const options = {
     url: "https://us21.api.mailchimp.com/3.0/lists/d031bdd9bd",
     method: "POST",
     headers: {
-        "Authorization": SECRET_API_KEY
+        "Authorization": process.env.MAILCHIMP_API
     },
     body: jsonData
 };
